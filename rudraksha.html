@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Science of Rudraksha | Divine Hindu Wisdom</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        saffron: '#FF9933',
+                        maroon: '#5c0812',
+                        gold: '#D4AF37',
+                        parchment: '#FDFBF7',
+                        'parchment-dark': '#f2eee6',
+                    },
+                    fontFamily: {
+                        'divine': ['Cinzel', 'serif'],
+                        'body': ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar for a polished feel */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #FDFBF7; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-parchment text-gray-800 font-body antialiased">
+
+    <nav class="bg-maroon text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="font-divine text-2xl tracking-widest text-gold font-bold">DIVINE VIDYA</div>
+            <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wide">
+                <a href="index.html" class="hover:text-gold transition">Home</a>
+                <a href="#" class="hover:text-gold transition">Rudraksha</a>
+                <a href="#" class="hover:text-gold transition">Yantras</a>
+                <a href="#" class="hover:text-gold transition">Pooja Items</a>
+                <a href="#" class="hover:text-gold transition">Scriptures</a>
+            </div>
+            <a href="https://divinehindu.com" class="bg-gold text-maroon px-4 py-2 rounded font-bold hover:bg-white transition">Visit Store</a>
+        </div>
+    </nav>
+
+    <header class="relative bg-parchment-dark py-20 text-center border-b-4 border-gold">
+        <div class="max-w-3xl mx-auto px-4">
+            <span class="text-saffron font-bold tracking-widest uppercase text-sm">Sacred Knowledge</span>
+            <h1 class="font-divine text-5xl md:text-6xl text-maroon mt-4 mb-6">The 5-Mukhi Rudraksha</h1>
+            <p class="text-xl text-gray-600 italic">"The Tears of Shiva that bring peace, health, and protection."</p>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-12">
+        
+        <main class="md:col-span-2 space-y-8">
+            
+            <section>
+                <h2 class="font-divine text-3xl text-maroon mb-4 border-l-4 border-saffron pl-4">Mythological Significance</h2>
+                <p class="leading-relaxed text-lg mb-4">
+                    According to the <strong>Shiv Puran</strong>, the Rudraksha tree originated from the teardrops of Lord Shiva. The 5-Mukhi bead represents the form of Shiva known as <em>Kalagni Rudra</em>. It is believed to cleanse the wearer of sins and align their vibration with the cosmic rhythm.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="font-divine text-3xl text-maroon mb-4 border-l-4 border-saffron pl-4">Scientific Perspective</h2>
+                <p class="leading-relaxed text-lg mb-4">
+                    Research suggests that Rudraksha beads possess <strong>dielectric and magnetic properties</strong>. When worn over the heart, they help regulate the bio-electric current of the body, potentially stabilizing the heartbeat and reducing stress levels (blood pressure).
+                </p>
+            </section>
+            
+            <div id="extra-content" class="p-6 bg-white rounded shadow-sm border border-gray-200">
+                <p class="text-gray-500 text-center italic">Loading related mantras...</p>
+            </div>
+
+        </main>
+
+        <aside class="md:col-span-1">
+            <div class="sticky top-24 bg-white p-6 rounded-xl shadow-xl border border-gold text-center">
+                <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Divine Recommendation</div>
+                
+                <div class="h-48 bg-gray-100 mb-4 rounded flex items-center justify-center text-gray-400">
+                    [Product Image Here]
+                </div>
+
+                <h3 class="font-divine text-2xl text-maroon mb-2">Original 5-Mukhi Mala</h3>
+                <p class="text-sm text-gray-600 mb-4">Lab-certified, consecrated in Ganga water, and ready for Japa.</p>
+                
+                <div class="text-saffron font-bold text-xl mb-4">₹ 1,250</div>
+                
+                <a href="#" class="block w-full bg-maroon text-white py-3 rounded hover:bg-saffron transition font-bold uppercase text-sm tracking-wider">
+                    Buy on Divine Hindu
+                </a>
+                
+                <div class="mt-4 text-xs text-gray-500 border-t pt-2">
+                    <span class="block">✓ 100% Authentic</span>
+                    <span class="block">✓ COD Available</span>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <script>
+        // Example: Using JS to load content dynamically so the page feels fast
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // Simulating an AJAX call to fetch mantras
+            setTimeout(() => {
+                const mantraContent = `
+                    <h3 class="font-divine text-xl text-maroon mb-2">Mantra for Wearing</h3>
+                    <p class="text-lg font-bold text-gray-800">"Om Hreem Namah"</p>
+                    <p class="text-sm text-gray-600 mt-2">Chant this mantra 108 times before wearing the mala for the first time.</p>
+                `;
+                document.getElementById("extra-content").innerHTML = mantraContent;
+                document.getElementById("extra-content").classList.add("border-l-4", "border-gold");
+            }, 1500); // 1.5 second delay to simulate loading
+        });
+    </script>
+
+</body>
+</html>
