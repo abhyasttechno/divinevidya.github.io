@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divine Vidya Blog | Sacred Knowledge</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        saffron: '#FF9933',
+                        maroon: '#5c0812',
+                        gold: '#D4AF37',
+                        parchment: '#FDFBF7',
+                        'parchment-dark': '#f2eee6',
+                        ebony: '#1a1a1a',
+                    },
+                    fontFamily: {
+                        'divine': ['Cinzel', 'serif'],
+                        'body': ['Lato', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85); /* Dark transparent background */
+            z-index: 100;
+            overflow-y: auto; /* Allows scrolling inside the modal */
+        }
+        .modal-content {
+            background-color: #FDFBF7; /* Parchment background */
+            margin: 5% auto; /* Top and bottom margin */
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            width: 95%;
+            max-width: 1000px; /* Wide popup */
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: #5c0812;
+            line-height: 1;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-parchment text-gray-800 font-body antialiased">
+
+    <nav class="bg-white/95 backdrop-blur shadow-md sticky top-0 z-50 border-b-2 border-gold">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <svg class="w-8 h-8 text-maroon" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 3.5L18.5 20h-13L12 5.5z"/></svg>
+                <div class="font-divine text-2xl tracking-widest text-maroon font-bold">DIVINE VIDYA</div>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm uppercase tracking-wide font-bold text-gray-600">
+                <a href="index.html" class="hover:text-saffron transition">Home</a>
+                <a href="index.html#categories" class="hover:text-saffron transition">Library</a>
+                <a href="blog.html" class="text-maroon">Blog</a>
+                <a href="#" class="hover:text-saffron transition">Consultation</a>
+                <a href="about.html" class="hover:text-saffron transition">About Us</a>
+            </div>
+            <a href="https://divinehindu.com" class="bg-maroon text-gold px-5 py-2 rounded font-bold hover:bg-gray-800 transition shadow-lg">Visit Store</a>
+        </div>
+    </nav>
+    
+    <header class="bg-parchment-dark py-16 text-center border-b-4 border-saffron">
+        <div class="max-w-4xl mx-auto px-4">
+            <h1 class="font-divine text-5xl md:text-6xl text-maroon mt-4 mb-4">The Wisdom Library</h1>
+            <p class="text-xl text-gray-600 italic">Deep insights into the science and spirituality of sacred tools.</p>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 py-16">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+            <div class="group cursor-pointer" onclick="openModal('blog1')">
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 card-hover transition duration-300">
+                    <div class="h-48 bg-maroon/10 relative overflow-hidden">
+                        <img src="images/rudraksha_karungali.png" alt="Rudraksha and Karungali comparison" class="w-full h-full object-cover object-center"/>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-xs text-saffron font-bold uppercase tracking-widest block mb-1">Comparison</span>
+                        <h3 class="font-divine text-xl text-maroon group-hover:text-saffron transition">Karungali vs. Rudraksha: Which Bead is Right?</h3>
+                        <p class="text-gray-600 mt-2 text-sm line-clamp-3">One governs the inner spiritual world (Shiva), and the other fortifies your external reality (Mars). Understand the core difference...</p>
+                        <span class="text-gold font-bold text-xs uppercase mt-4 block tracking-wider">Read More →</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group cursor-pointer" onclick="openModal('blog2')">
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 card-hover transition duration-300">
+                    <div class="h-48 bg-ebony relative overflow-hidden">
+                        <img src="images/karungali-mala.png" alt="Karungali wood beads" class="w-full h-full object-cover object-center"/>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-xs text-saffron font-bold uppercase tracking-widest block mb-1">Guide</span>
+                        <h3 class="font-divine text-xl text-maroon group-hover:text-saffron transition">The Sacred Ebony: Care, Consecration, and Benefits</h3>
+                        <p class="text-gray-600 mt-2 text-sm line-clamp-3">Learn the Niyamas (rules) for wearing, the simple steps for consecration (Prana Pratishtha), and how to recharge your mala...</p>
+                        <span class="text-gold font-bold text-xs uppercase mt-4 block tracking-wider">Read More →</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group cursor-pointer" onclick="openModal('blog3')">
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 card-hover transition duration-300">
+                    <div class="h-48 bg-red-50 relative overflow-hidden">
+                        <img src="images/rudra.png" alt="Close up of a Rudraksha bead" class="w-full h-full object-cover object-center"/>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-xs text-saffron font-bold uppercase tracking-widest block mb-1">Spiritual Science</span>
+                        <h3 class="font-divine text-xl text-maroon group-hover:text-saffron transition">Beyond Belief: Why Every Seeker Should Wear Rudraksha</h3>
+                        <p class="text-gray-600 mt-2 text-sm line-clamp-3">The bead is a powerful dielectric material that stabilizes heart rhythm and aids in Dharana (concentration), rooted in bio-magnetic science...</p>
+                        <span class="text-gold font-bold text-xs uppercase mt-4 block tracking-wider">Read More →</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group cursor-pointer" onclick="openModal('blog4')">
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 card-hover transition duration-300">
+                    <div class="h-48 bg-yellow-100 relative overflow-hidden">
+                        <img src="images/shiv_puran.jpg" alt="Ancient book of scriptures" class="w-full h-full object-cover object-center"/>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-xs text-saffron font-bold uppercase tracking-widest block mb-1">Transformation</span>
+                        <h3 class="font-divine text-xl text-maroon group-hover:text-saffron transition">The Practical Power of Shiv Puran: A Blueprint for Life</h3>
+                        <p class="text-gray-600 mt-2 text-sm line-clamp-3">Discover how reading the Shiv Puran removes negative energy, fosters Vairagya, and makes you eligible for the ultimate spiritual rewards...</p>
+                        <span class="text-gold font-bold text-xs uppercase mt-4 block tracking-wider">Read More →</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div id="blog-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div id="modal-body-content" class="space-y-6">
+                </div>
+        </div>
+    </div>
+    
+    <div id="full-content" class="hidden">
+        
+        <div id="blog1-full" data-title="Karungali vs. Rudraksha: Which Sacred Bead is Right for You?" data-category="Comparison & Guidance">
+            <section class="space-y-6 text-lg leading-relaxed">
+                <p>Many seekers encounter a fundamental question: Should I wear the <b>Rudraksha</b>, the symbol of Shiva's compassion, or the powerful <b>Karungali (Ebony) Mala</b>, associated with success and protection? The truth is, one governs the inner spiritual world, and the other fortifies your external reality.</p>
+
+                <h3 class="font-divine text-2xl text-saffron border-b pb-1 mb-3">Rudraksha: The Tears of Shiva (Inner World)</h3>
+                <p>The Rudraksha bead finds its mention in the <b>Shiv Puran</b> and <b>Devi Bhagwat Puran</b>, originating from the teardrops of Lord Shiva. It is a powerful <b>dielectric material</b> that stabilizes the heart chakra and regulates the body's bio-electric current, acting as a natural shield against stress.</p>
+                <ul class="list-disc list-inside ml-6 text-gray-700">
+                    <li><b>Scripture Mention:</b> Shiv Puran, Rudraksha Jabala Upanishad.</li>
+                    <li><b>Ruling Planet/Deity:</b> All major Deities; primarily Shiva (for a 5-Mukhi, Jupiter).</li>
+                    <li><b>Primary Benefit:</b> Emotional control, increased spiritual focus, and aid in meditation.</li>
+                </ul>
+                <div class="text-center my-6"><img src="images/karungali-rudraksha-comp.png" alt="Rudraksha Beads close up" class="w-full max-w-md mx-auto rounded-lg shadow-md"/></div>
+
+                <h3 class="font-divine text-2xl text-ebony border-b pb-1 mb-3">Karungali: The Victory Wood (Outer World)</h3>
+                <p>Karungali (Ebony) is known as the <b>"Victory Wood."</b> It is revered in traditional South Indian temple building, where pieces were placed in the <b>Kalasham</b> (tower tip) due to their unique properties of absorbing cosmic and electric radiation. Astrologically, it is used to pacify the malefic effects of <b>Mars (Mangal/Angaraka)</b>.</p>
+                <ul class="list-disc list-inside ml-6 text-gray-700">
+                    <li><b>Significance:</b> Temple science, protection against <b>Drishti</b> (Evil Eye).</li>
+                    <li><b>Ruling Planet/Deity:</b> Mars (Mangal) and Goddess Varahi Amman.</li>
+                    <li><b>Primary Benefit:</b> Financial stability, courage, and protection from negative psychic energy.</li>
+                </ul>
+                <div class="text-center my-6"><img src="images/karungali-mala-care.png" alt="Karungali mala close up" class="w-full max-w-md mx-auto rounded-lg shadow-md"/></div>
+
+                <h3 class="font-divine text-2xl text-maroon mt-6">Conclusion: A Complete Shield</h3>
+                <p>Rudraksha aids your <b>spiritual ascent (Moksha)</b>, while Karungali secures your <b>material foundation (Siddhi)</b>. Many seekers choose to wear the Rudraksha Mala close to the heart for devotion and the Karungali Mala on the wrist for protection and success. Choose the bead that addresses your most pressing need first, or wear both for a complete spiritual and physical shield!</p>
+
+                <div class="bg-parchment-dark p-4 rounded text-center border-t-2 border-maroon">
+                    <p class="font-bold text-lg text-maroon">Ready to choose your shield?</p>
+                    <a href="https://divinehindu.com" class="text-saffron font-bold hover:text-maroon transition block mt-2">Browse the Certified Collections at Divine Hindu →</a>
+                </div>
+            </section>
+        </div>
+
+        <div id="blog2-full" data-title="The Sacred Ebony: Karungali Mala Care, Consecration, and Benefits" data-category="Sacred Guide">
+            <section class="space-y-6 text-lg leading-relaxed">
+                <h3 class="font-divine text-2xl text-saffron border-b pb-1 mb-3">How to Consecrate (Prana Pratishtha)</h3>
+                <p>The <b>consecration (Prana Pratishtha)</b> process infuses the mala with spiritual energy, transforming it from a piece of wood into a sacred tool. While Divine Hindu provides pre-consecrated malas, you can recharge yours with this simple method:</p>
+                <ul class="list-decimal list-inside ml-6 text-gray-700">
+                    <li><b>Purification:</b> Dip the mala in raw cow's milk and then rinse with Ganga Jal (or purified water).</li>
+                    <li><b>Energizing:</b> Apply a small amount of sandalwood paste (Chandan) or Vibhuti to each bead.</li>
+                    <li><b>Mantra:</b> Chant the <b>Mangala Moola Mantra</b> or <b>Om Sreem Varahi Namah</b> 108 times while holding the mala.</li>
+                </ul>
+
+                <h3 class="font-divine text-2xl text-ebony border-b pb-1 mb-3">Wearing, Niyamas (Rules), and Care</h3>
+                <p>To preserve the protective energy of the Karungali mala, follow these guidelines:</p>
+                <ul class="list-disc list-inside ml-6 text-gray-700">
+                    <li><b>Wearing Time:</b> It is traditionally worn after sunrise on a <b>Tuesday</b> (Day of Mars).</li>
+                    <li><b>Niyamas:</b> Avoid wearing it while visiting cemeteries or places of heavy consumption (meat, alcohol). Remove it before entering the bathroom.</li>
+                    <li><b>Cleaning:</b> Wipe it occasionally with a dry, clean cloth. Karungali wood is dense and should not be soaked heavily.</li>
+                    <li><b>Recharge:</b> Keep the mala near a <b>copper vessel</b> or a crystal cluster overnight to clear absorbed negativity.</li>
+                </ul>
+                <p class="italic text-gray-600 border-l-4 border-saffron pl-4"><b>Trust Tip:</b> Genuine Karungali wood will sink immediately in water due to its density. This is a simple test of authenticity.</p>
+
+                <div class="bg-parchment-dark p-4 rounded text-center border-t-2 border-maroon">
+                    <p class="font-bold text-lg text-maroon">Get your genuine, energized Karungali Mala today!</p>
+                    <a href="https://divinehindu.com/karungali" class="text-saffron font-bold hover:text-maroon transition block mt-2">View Authenticity Guaranteed Malas →</a>
+                </div>
+            </section>
+        </div>
+
+        <div id="blog3-full" data-title="Beyond Belief: Why Every Seeker Should Wear Rudraksha" data-category="Spiritual Science">
+            <section class="space-y-6 text-lg leading-relaxed">
+                <p>The decision to wear a <b>Rudraksha</b> bead is rooted not in blind faith, but in ancient <b>bio-magnetic science</b>. This natural seed acts as a powerful interface between your body's energy and the cosmic field.</p>
+
+                <h3 class="font-divine text-2xl text-saffron border-b pb-1 mb-3">The Science of Stability and Focus</h3>
+                <p>Rudraksha beads are known to possess <b>dielectric and magnetic properties</b>. When worn close to the heart (Anahata Chakra):</p>
+                <ul class="list-disc list-inside ml-6 text-gray-700">
+                    <li><b>Heart Stabilization:</b> They act as a <b>capacitor</b>, stabilizing the heart rhythm and managing stress levels by regulating the flow of bio-electric current through the body.</li>
+                    <li><b>Aura Shield:</b> They create a small magnetic field around the wearer, acting as a filter for negative thoughts and psychic energy from the environment.</li>
+                    <li><b>Focus:</b> They aid in <b>Dharana</b> (concentration), making them essential for students, professionals, and meditators.</li>
+                </ul>
+
+                <h3 class="font-divine text-2xl text-maroon border-b pb-1 mb-3">Scriptural Mandate and Spiritual Significance</h3>
+                <p>The <b>Rudraksha Jabala Upanishad</b> is dedicated solely to the bead's power, stating that even seeing a Rudraksha is meritous. Wearing it is considered a direct way to honor Lord Shiva and invite his grace. It is the ultimate tool for reducing the burden of <b>karma</b> accumulated across lives.</p>
+                <div class="text-center my-6"><img src="images/why-rudraksha.png" alt="Person meditating with Rudraksha mala" class="w-full max-w-md mx-auto rounded-lg shadow-md"/></div>
+
+                <div class="bg-parchment-dark p-4 rounded text-center border-t-2 border-maroon">
+                    <p class="font-bold text-lg text-maroon">Find the perfect Rudraksha to enhance your meditation and reduce stress.</p>
+                    <a href="https://divinehindu.com/rudraksha" class="text-saffron font-bold hover:text-maroon transition block mt-2">Shop Lab-Certified Rudraksha →</a>
+                </div>
+            </section>
+        </div>
+
+        <div id="blog4-full" data-title="The Practical Power of Shiv Puran: A Blueprint for Transformation" data-category="Self-Transformation">
+            <section class="space-y-6 text-lg leading-relaxed">
+                <p>The <b>Shiv Puran</b> is often seen as a mythological text, but its practical benefits for the modern reader are immense. It is a powerful form of spiritual cleansing that yields both material and eternal rewards.</p>
+
+                <h3 class="font-divine text-2xl text-saffron border-b pb-1 mb-3">Removes Negative Energy and Purifies the Home</h3>
+                <p>Engaging with the Puran, whether through reading or listening, generates a high, positive vibrational frequency (<b>Sattva</b>). This energy displaces lower, negative energies accumulated from daily stress and worldly interactions, creating a peaceful and centered atmosphere in your environment.</p>
+
+                <h3 class="font-divine text-2xl text-maroon border-b pb-1 mb-3">Internal and External Change</h3>
+                <ul class="list-disc list-inside ml-6 text-gray-700">
+                    <li><b>Internal Shift:</b> The stories and philosophical discourses change you at a deep psychological level, instilling <b>Vairagya</b> (detachment) from temporary pleasures and cultivating compassion.</li>
+                    <li><b>External Manifestation:</b> This internal clarity leads to better <b>Karma</b>. You make wiser decisions, which naturally improves relationships, career success, and financial well-being.</li>
+                </ul>
+
+                <h3 class="font-divine text-2xl text-saffron border-b pb-1 mb-3">The Promise of Shiv Loka</h3>
+                <p>The ultimate reward mentioned in the text is the eligibility to attain <b>Shiv Loka</b> (Moksha or the highest spiritual abode). This is attained not just through extreme penance, but through sincere devotion and understanding of Lord Shiva's true form, as detailed in the Puran.</p>
+                
+                <p class="italic font-bold text-maroon">Real Testimonial Snippet:</p>
+                <blockquote class="border-l-4 border-gold pl-4 text-gray-600 my-4">
+                    "After reading just two chapters daily, I found my chronic anxiety had melted away. The Puran gives perspective, changing my whole outlook on life and work."
+                </blockquote>
+                <div class="text-center my-6"><img src="images/shiv-puran-book.png" alt="Shiv Puran Book" class="w-full max-w-md mx-auto rounded-lg shadow-md"/></div>
+
+
+                <div class="bg-parchment-dark p-4 rounded text-center border-t-2 border-maroon">
+                    <p class="font-bold text-lg text-maroon">Start your transformation today. Find the authorized translation.</p>
+                    <a href="https://divinehindu.com/shivpuran" class="text-saffron font-bold hover:text-maroon transition block mt-2">Buy Shiv Puran Book →</a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        function openModal(articleId) {
+            const modal = document.getElementById('blog-modal');
+            const contentContainer = document.getElementById('modal-body-content');
+            const sourceDiv = document.getElementById(articleId + '-full');
+            
+            if (!sourceDiv) return;
+
+            const title = sourceDiv.getAttribute('data-title');
+            const category = sourceDiv.getAttribute('data-category');
+            
+            // 1. Construct the modal content header
+            let contentHTML = `
+                <span class="text-xs text-saffron font-bold uppercase tracking-widest block mb-1">${category}</span>
+                <h2 class="font-divine text-3xl text-maroon mb-6">${title}</h2>
+                <hr class="border-maroon/20 mb-6">
+            `;
+            
+            // 2. Add the main article content (cloning the inner HTML)
+            contentHTML += sourceDiv.innerHTML;
+            
+            // 3. Inject and Display
+            contentContainer.innerHTML = contentHTML;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            
+            // Scroll to the top of the modal content after display
+            modal.scrollTo(0, 0);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('blog-modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore background scrolling
+        }
+
+        // Close modal when clicking outside the content box
+        document.getElementById('blog-modal').addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal-overlay')) {
+                closeModal();
+            }
+        });
+    </script>
+
+    <footer class="bg-gray-900 text-white mt-auto border-t-4 border-gold">
+        <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <div class="font-divine text-2xl text-gold mb-4">DIVINE VIDYA</div>
+                <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+                    An educational initiative by <b>Divine Hindu</b>. Our mission is to bridge the gap between ancient Sanatana Dharma wisdom and modern seekers.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold text-saffron uppercase tracking-widest text-xs mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="about.html" class="hover:text-white">About Us</a></li>
+                    <li><a href="#" class="hover:text-white">Contact</a></li>
+                    <li><a href="https://divinehindu.com" class="hover:text-white">Online Store</a></li>
+                    <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-saffron uppercase tracking-widest text-xs mb-4">Newsletter</h4>
+                <p class="text-gray-400 text-xs mb-4">Receive a Vedic insight in your inbox every Monday.</p>
+                <div class="flex">
+                    <input type="email" placeholder="Your Email" class="bg-gray-800 text-white px-4 py-2 text-sm w-full focus:outline-none focus:ring-1 focus:ring-gold">
+                    <button class="bg-gold text-maroon px-4 font-bold hover:bg-white">JOIN</button>
+                </div>
+            </div>
+        </div>
+        <div class="bg-black py-4 text-center text-gray-600 text-xs">
+            &copy; 2024 Divine Vidya. All Rights Reserved.
+        </div>
+    </footer>
+</body>
+</html>
